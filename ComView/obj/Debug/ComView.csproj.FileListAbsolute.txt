@@ -1,0 +1,10 @@
+C:\Users\toru\source\repos\ComView\ComView\bin\Debug\ComView.exe.config
+C:\Users\toru\source\repos\ComView\ComView\bin\Debug\ComView.exe
+C:\Users\toru\source\repos\ComView\ComView\bin\Debug\ComView.pdb
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.csprojAssemblyReference.cache
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.Form1.resources
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.Properties.Resources.resources
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.csproj.GenerateResource.cache
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.csproj.CoreCompileInputs.cache
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.exe
+C:\Users\toru\source\repos\ComView\ComView\obj\Debug\ComView.pdb
