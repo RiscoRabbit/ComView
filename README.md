@@ -5,7 +5,7 @@ It will help you when developing Arduino applications and others.
 
 # Author
   
-* RiscoR abbit
+* Risco Rabbit
 * https://twitter.com/RiscoRabbits
 
 # License
