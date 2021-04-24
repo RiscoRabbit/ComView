@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
 
-// http://truthfullscore.hatenablog.com/entry/2014/01/10/180608
 
 namespace ComView
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        static Form1 me;
-        public Form1()
+        static MainForm me;
+        public MainForm()
         {
             InitializeComponent();
             me = this;
@@ -38,18 +37,22 @@ namespace ComView
         private void check()
         {
             string[] tmpDevNames = GetDeviceNames();
-            foreach (string s in tmpDevNames)
+            if(tmpDevNames == null)
             {
-                if (Array.IndexOf(devNames, s) == -1)
+                return;
+            }
+            foreach (string dev in tmpDevNames)
+            {
+                if (Array.IndexOf(devNames, dev) == -1)
                 {
-                    SetText("Add " + s);
+                    SetText("Add " + dev);
                 }
             }
-            foreach (string s in devNames)
+            foreach (string dev in devNames)
             {
-                if (Array.IndexOf(tmpDevNames, s) == -1)
+                if (Array.IndexOf(tmpDevNames, dev) == -1)
                 {
-                    SetText("Del " + s);
+                    SetText("Del " + dev);
                 }
             }
             devNames = tmpDevNames;
@@ -75,6 +78,9 @@ namespace ComView
                     break;
             }
         }
+
+
+        // http://truthfullscore.hatenablog.com/entry/2014/01/10/180608
         public static string[] GetDeviceNames()
         {
             var deviceNameList = new System.Collections.ArrayList();
@@ -82,17 +88,14 @@ namespace ComView
             ManagementClass mcPnPEntity = new ManagementClass("Win32_PnPEntity");
             ManagementObjectCollection manageObjCol = mcPnPEntity.GetInstances();
 
-            //全てのPnPデバイスを探索しシリアル通信が行われるデバイスを随時追加する
             foreach (ManagementObject manageObj in manageObjCol)
             {
-                //Nameプロパティを取得
                 var namePropertyValue = manageObj.GetPropertyValue("Name");
                 if (namePropertyValue == null)
                 {
                     continue;
                 }
 
-                //Nameプロパティ文字列の一部が"(COM1)～(COM999)"と一致するときリストに追加"
                 string name = namePropertyValue.ToString();
                 if (check.IsMatch(name))
                 {
@@ -100,7 +103,6 @@ namespace ComView
                 }
             }
 
-            //戻り値作成
             if (deviceNameList.Count > 0)
             {
                 string[] deviceNames = new string[deviceNameList.Count];
